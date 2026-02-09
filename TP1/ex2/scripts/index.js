@@ -19,14 +19,18 @@
 // }
 
 document.addEventListener("DOMContentLoaded", (event) => {
-    document.querySelector("table").addEventListener('click', change_couleur);
+    let table = document.querySelector("table")
+    table.addEventListener("click", change_couleur);
+
+    function change_couleur(event){
+        let couleurCliquee = event.target;
+        let couleur = couleurCliquee.innerText;
+
+        let listeParagraphes = document.querySelectorAll("aside p");
+        listeParagraphes.forEach((p) => {
+            p.style.color = couleur;
+        })
+        console.log("couleur_value : ", couleur);
+    }
 });
 
-function change_couleur(event){
-    let couleur = event.target;
-    couleur.innerText = "";
-    let listeParagraphes = document.querySelectorAll("p");
-    listeParagraphes.forEach((couleur) => {
-        couleur.style.color = this;
-    })
-}
