@@ -16,18 +16,16 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 function ajouter_deux_couleurs(){
     let span = document.querySelector("span");
-    let input = span.querySelector("input");
+    let inputs = span.querySelectorAll("input");
     let table = document.querySelector("table tbody");
 
     let tr = document.createElement("tr");
-    table.appendChild(tr);
 
-    input.forEach((i) => {
-        let textNode = document.createTextNode(i.value);
-        let caseTab = document.createElement("tr td");
-        caseTab.style.backgroundColor = i.value;
-        caseTab.appendChild(textNode);
-        table.appendChild(caseTab);
-    })
-    console.log()
+    for (let i = 0; i < inputs.length; i++) {
+        let td = document.createElement("td");
+        td.innerText = inputs[i].value;
+        td.style.backgroundColor = inputs[i].value;
+        tr.appendChild(td);
+    }
+    table.appendChild(tr);
 }
