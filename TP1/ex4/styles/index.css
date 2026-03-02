@@ -66,6 +66,9 @@ aside p{
 .color-btn[data-color="hotpink"] { background: hotpink; }
 .color-btn[data-color="deeppink"] { background: deeppink; }
 
+mark{
+	background-color: yellow;
+}
 
 main section article { 
 	margin : 1rem;

@@ -31,7 +31,7 @@
 //     table.appendChild(tr);
 // }
 
-// Question 5
+// Question 5 de l'ex 3
 document.querySelectorAll(".color-btn").forEach(btn => {
     btn.addEventListener("click", () => {
         let couleur = btn.dataset.color;
@@ -41,3 +41,30 @@ document.querySelectorAll(".color-btn").forEach(btn => {
     });
 });
 
+// Question 1 de l'ex 4
+document.addEventListener("DOMContentLoaded", (event) => {
+    // let input = document.querySelector("input");
+    // input.addEventListener("keyup", cherche_dans_paragraphes_de_main);
+    
+});
+
+function cherche_dans_paragraphes_de_main(that){
+    //let texte = event.target;
+    let texte = that.value;
+    //console.log("texte recherche : " + texte)
+    //let texteRecherche = document.getElementById("paragraph");
+    let texteRecherche = document.querySelectorAll("main section article p");
+    // listeParagraphes.innerHTML = texteRecherche.textContent;
+    // texte = texte.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
+    // let pattern = new RegExp(`${texte}`, "gi");
+    texteRecherche.forEach((p) => {
+        console.log("texte recherche : " + p.textContent);
+    })
+    //texteRecherche.innerHTML = texteRecherche.textContext.replace(pattern, match => `<mark>${match}</mark>`);
+    //if(){    
+        // listeParagraphes.forEach((p) => {
+        //     p.style.color = "#0000FF";
+        // })
+    //}
+    //console.log("texte recherché : " + texteRecherche);
+}
