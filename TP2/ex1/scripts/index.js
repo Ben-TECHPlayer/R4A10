@@ -43,31 +43,30 @@ document.querySelectorAll(".color-btn").forEach(btn => {
 
 // Question 1 de l'ex 4
 function cherche_dans_paragraphes_de_main(input) {
-    const texte = input.value.toLowerCase();   // cours 01 : accès .value
-    const ps = document.querySelectorAll("main section article p"); // cours 01 : querySelectorAll
+    const texte = input.value.toLowerCase(); 
+    const ps = document.querySelectorAll("main section article p"); 
 
     let trouve = false;
 
-    ps.forEach(p => {                          // cours 02 : .forEach
+    ps.forEach(p => {                        
         const contenu = p.textContent.toLowerCase();
 
-        if (texte !== "" && contenu.includes(texte)) {  // cours 02 : méthodes string
-            p.classList.add("match");                  // cours 02 : classList.add
+        if (texte !== "" && contenu.includes(texte)) { 
+            p.classList.add("match");
             trouve = true;
         } else {
-            p.classList.remove("match");               // cours 02 : classList.remove
+            p.classList.remove("match");
         }
         console.log("texte recherche : " + p.textContent);
     });
 
-    // cours 01 : validité + setCustomValidity + reportValidity
     if (texte !== "" && !trouve) {
         input.setCustomValidity("Aucun paragraphe ne contient ce texte");
     } else {
         input.setCustomValidity("");
     }
 
-    input.reportValidity(); // cours 01
+    input.reportValidity();
 }
 
 // Question 3 de l'ex 4
@@ -95,7 +94,6 @@ function cherche_dans_paragraphes_de_main_v2(input) {
             let debut = 0;
             let pos = originalMin.indexOf(texte);
 
-            // On reconstruit la chaîne avec des <span class="match"> autour des hits
             while (pos !== -1) {
                 resultat += original.substring(debut, pos)
                          + '<span class="match">'
@@ -110,7 +108,6 @@ function cherche_dans_paragraphes_de_main_v2(input) {
             trouve = true;
 
         } else {
-            // On remet le texte propre, sans span
             p.textContent = original;
         }
     });
@@ -124,25 +121,22 @@ function cherche_dans_paragraphes_de_main_v2(input) {
     input.reportValidity();
 }
 
+// Question 2 de l'ex 5
+document.addEventListener("DOMContentLoaded", function () {
+    function move_img(){
 
+    }
+});
 
-// function cherche_dans_paragraphes_de_main(that){
-//     //let texte = event.target;
-//     let texte = that.value;
-//     //console.log("texte recherche : " + texte)
-//     //let texteRecherche = document.getElementById("paragraph");
-//     let texteRecherche = document.querySelectorAll("main section article p");
-//     // listeParagraphes.innerHTML = texteRecherche.textContent;
-//     // texte = texte.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
-//     // let pattern = new RegExp(`${texte}`, "gi");
-//     texteRecherche.forEach((p) => {
-//         console.log("texte recherche : " + p.textContent);
-//     })
-//     //texteRecherche.innerHTML = texteRecherche.textContext.replace(pattern, match => `<mark>${match}</mark>`);
-//     //if(){    
-//         // listeParagraphes.forEach((p) => {
-//         //     p.style.color = "#0000FF";
-//         // })
-//     //}
-//     //console.log("texte recherché : " + texteRecherche);
-// }
+document.addEventListener("DOMContentLoaded", (event) => {
+    function mousemove(){
+        let element = event.target;
+    }
+});
+
+function echange_images(){
+    let element = event.target;
+    if(clicked){
+        element.style.borderColor = "#007AFF";
+    }
+}
