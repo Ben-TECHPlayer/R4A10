@@ -8,7 +8,6 @@
 		<link rel="stylesheet" href="./styles/float_101.css" />
 		<link rel="stylesheet" href="./styles/flexbox_101.css" />
 		<link rel="stylesheet" href="./styles/flexbox_101_nav.css" />
-		<script src="./scripts/index.js" defer></script>
 	</head>
 	<body>
 		<header>
@@ -24,10 +23,10 @@
 		</nav>
 		<aside>
 			<div class="aside-container">
-				<div id="cadre1"></div>
-				<div id="cadre2"></div>
-				<div id="cadre3"></div>
-				<div id="cadre4"></div>
+				<div id="cadre1" onmousemove="move_img()"></div>
+				<div id="cadre2" onmousemove="move_img()"></div>
+				<div id="cadre3" onmousemove="move_img()"></div>
+				<div id="cadre4" onmousemove="move_img()"></div>
 			</div>
 		</aside>
 		<main>
@@ -38,20 +37,20 @@
 				</div>
 				<input type="checkbox" name="echange" id="echange">échanger les positions des deux images
 				<div class="album">
-					<img src="./images/collection/000.webp" />
-					<img src="./images/collection/001.jpeg" />
-					<img src="./images/collection/002.webp" />
-					<img src="./images/collection/003.jpg" />
-					<img src="./images/collection/004.jpg" />
-					<img src="./images/collection/005.png" />
-					<img src="./images/collection/006.jpg" />
-					<img src="./images/collection/007.jpg" />
-					<img src="./images/collection/008.jpg" />
-					<img src="./images/collection/009.webp" />
-					<img src="./images/collection/010.avif" />
-					<img src="./images/collection/011.jpg" />
-					<img src="./images/collection/012.jpeg" />
-					<img src="./images/collection/013.webp" />
+					<img src="./images/collection/000.webp" onclick="echange_images(event)"/>
+					<img src="./images/collection/001.jpeg" onclick="echange_images(event)"/>
+					<img src="./images/collection/002.webp" onclick="echange_images(event)"/>
+					<img src="./images/collection/003.jpg" onclick="echange_images(event)"/>
+					<img src="./images/collection/004.jpg" onclick="echange_images(event)"/>
+					<img src="./images/collection/005.png" onclick="echange_images(event)"/>
+					<img src="./images/collection/006.jpg" onclick="echange_images(event)"/>
+					<img src="./images/collection/007.jpg" onclick="echange_images(event)"/>
+					<img src="./images/collection/008.jpg" onclick="echange_images(event)"/>
+					<img src="./images/collection/009.webp" onclick="echange_images(event)"/>
+					<img src="./images/collection/010.avif" onclick="echange_images(event)"/>
+					<img src="./images/collection/011.jpg" onclick="echange_images(event)"/>
+					<img src="./images/collection/012.jpeg" onclick="echange_images(event)"/>
+					<img src="./images/collection/013.webp" onclick="echange_images(event)"/>
 				</div>
 			</section>
 		</main>

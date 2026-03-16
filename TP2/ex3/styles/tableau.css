@@ -1,0 +1,23 @@
+/* Style du conteneur des flèches */
+th .tri-fleches {
+    display: inline-flex;
+    flex-direction: column; /* Superpose les flèches l'une au-dessus de l'autre */
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+/* Style commun aux flèches */
+th .tri-fleches .asc, 
+th .tri-fleches .desc {
+    font-size: 0.6em; /* Les flèches doivent être plus petites que le texte */
+    cursor: pointer;  /* Le curseur change pour indiquer que c'est cliquable */
+    color: #888;      /* Couleur grisée par défaut */
+    line-height: 1;   /* Rapproche les flèches */
+}
+
+/* Effet au survol pour montrer l'interactivité */
+th .tri-fleches .asc:hover, 
+th .tri-fleches .desc:hover {
+    color: black;
+    transform: scale(1.2); /* Grossit légèrement au survol */
+}

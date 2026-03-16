@@ -43,30 +43,31 @@ document.querySelectorAll(".color-btn").forEach(btn => {
 
 // Question 1 de l'ex 4
 function cherche_dans_paragraphes_de_main(input) {
-    const texte = input.value.toLowerCase(); 
-    const ps = document.querySelectorAll("main section article p"); 
+    const texte = input.value.toLowerCase();   // cours 01 : accès .value
+    const ps = document.querySelectorAll("main section article p"); // cours 01 : querySelectorAll
 
     let trouve = false;
 
-    ps.forEach(p => {                        
+    ps.forEach(p => {                          // cours 02 : .forEach
         const contenu = p.textContent.toLowerCase();
 
-        if (texte !== "" && contenu.includes(texte)) { 
-            p.classList.add("match");
+        if (texte !== "" && contenu.includes(texte)) {  // cours 02 : méthodes string
+            p.classList.add("match");                  // cours 02 : classList.add
             trouve = true;
         } else {
-            p.classList.remove("match");
+            p.classList.remove("match");               // cours 02 : classList.remove
         }
         console.log("texte recherche : " + p.textContent);
     });
 
+    // cours 01 : validité + setCustomValidity + reportValidity
     if (texte !== "" && !trouve) {
         input.setCustomValidity("Aucun paragraphe ne contient ce texte");
     } else {
         input.setCustomValidity("");
     }
 
-    input.reportValidity();
+    input.reportValidity(); // cours 01
 }
 
 // Question 3 de l'ex 4
@@ -94,6 +95,7 @@ function cherche_dans_paragraphes_de_main_v2(input) {
             let debut = 0;
             let pos = originalMin.indexOf(texte);
 
+            // On reconstruit la chaîne avec des <span class="match"> autour des hits
             while (pos !== -1) {
                 resultat += original.substring(debut, pos)
                          + '<span class="match">'
@@ -108,6 +110,7 @@ function cherche_dans_paragraphes_de_main_v2(input) {
             trouve = true;
 
         } else {
+            // On remet le texte propre, sans span
             p.textContent = original;
         }
     });
@@ -121,15 +124,55 @@ function cherche_dans_paragraphes_de_main_v2(input) {
     input.reportValidity();
 }
 
-// Question 2 de l'ex 5
-document.addEventListener("DOMContentLoaded", function () {
-    function move_img(){
+// Exercice 5
+// On attend que le DOM soit chargé
+document.addEventListener("DOMContentLoaded", () => {
 
-    }
-});
+    // Structure pour mémoriser le déplacement total (x, y) de chaque div par son ID
+    // On initialise à 1 pour correspondre au 1px du CSS
+    const trajetTotal = {
+        "cadre1": { x: 1, y: 1 },
+        "cadre2": { x: 1, y: 1 },
+        "cadre3": { x: 1, y: 1 },
+        "cadre4": { x: 1, y: 1 }
+    };
 
-document.addEventListener("DOMContentLoaded", (event) => {
-    function mousemove(){
-        let element = event.target;
+    /**
+     * Callback associée à l'événement mousemove
+     * @param {MouseEvent} event 
+     */
+    function move_img(event) {
+        // 1. Contrôler que le bouton gauche est enfoncé
+        // .buttons retourne un champ de bits (1 = bouton gauche)
+        if (event.buttons === 1) {
+            
+            // 2. Récupérer l'élément (ou son id) via .target
+            const element = event.target;
+            const id = element.id;
+
+            // 3. Déterminer quel déplacement s'est produit via .movementX/Y
+            const dx = event.movementX;
+            const dy = event.movementY;
+
+            // 4. Mettre à jour le déplacement total depuis le chargement
+            // On vérifie que l'id existe dans notre structure pour éviter les erreurs
+            if (trajetTotal[id]) {
+                trajetTotal[id].x += dx;
+                trajetTotal[id].y += dy;
+
+                // 5. Mettre à jour les valeurs CSS .style.left et .style.top
+                element.style.left = trajetTotal[id].x + "px";
+                element.style.top = trajetTotal[id].y + "px";
+
+                // Petit log pour vérifier que ça bouge bien
+                console.log(`Déplacement de ${id} : x=${trajetTotal[id].x}, y=${trajetTotal[id].y}`);
+            }
+        }
     }
+
+    // Association de la callback à l'événement mousemove pour chaque div
+    const cadres = document.querySelectorAll('aside div[id^="cadre"]');
+    cadres.forEach(div => {
+        div.addEventListener("mousemove", move_img);
+    });
 });
